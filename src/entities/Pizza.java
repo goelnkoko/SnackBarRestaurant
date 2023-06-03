@@ -8,8 +8,8 @@ public class Pizza extends Prato {
     private String cobertura;
     private boolean coberturaRecheada;
 
-    public Pizza(double precoDeVenda, LocalDate dataDeValidade, double peso, String recheio, String molho, String cobertura, boolean coberturaRecheada) {
-        super(precoDeVenda, dataDeValidade, peso);
+    public Pizza(double precoDeVenda, LocalDate dataDeValidade, double peso, String recheio, String molho, String cobertura, boolean coberturaRecheada, int quantidade) {
+        super(precoDeVenda, dataDeValidade, peso, quantidade, recheio);
         this.molho = molho;
         this.cobertura = cobertura;
         this.coberturaRecheada = coberturaRecheada;
@@ -37,5 +37,16 @@ public class Pizza extends Prato {
 
     public void setCoberturaRecheada(boolean coberturaRecheada) {
         this.coberturaRecheada = coberturaRecheada;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza{" +
+                "recheio=" + getRecheio() +
+                ", molho='" + molho + '\'' +
+                ", cobertura='" + cobertura + '\'' +
+                ", coberturaRecheada=" + (coberturaRecheada? "sim":"nao") +
+                super.toString() +
+                '}';
     }
 }

@@ -7,8 +7,8 @@ public class Lanche extends Prato{
     private String pao;
     private String molho;
 
-    public Lanche(Double precoDeVenda, LocalDate dataDeValidade, Double peso, String pao, String molho) {
-        super(precoDeVenda, dataDeValidade, peso);
+    public Lanche(Double precoDeVenda, LocalDate dataDeValidade, Double peso, String recheio, String pao, String molho, int quantidade) {
+        super(precoDeVenda, dataDeValidade, peso, quantidade, recheio);
         this.pao = pao;
         this.molho = molho;
     }

@@ -11,10 +11,8 @@ public class Pedido {
     private List<Prato> prato = new ArrayList<>();
     private double pagamento;
 
-
-    public Pedido(Cliente cliente, Prato prato) {
+    public Pedido(Cliente cliente) {
         this.cliente = cliente;
-        this.prato.add(prato);
     }
 
     public Cliente getCliente() {
@@ -58,15 +56,27 @@ public class Pedido {
     }
 
     public String gerarFactura() { //Factura provisória a ser tranformada em aquivo txt
-        return "Pedido{" +
-                "cliente=" + cliente.getNome() +
-                ", prato=" + prato.get(0) +
-                ", quantidade=" + prato.get(0).getQuantidade() +
-                ", taxaDeServico=" + taxaDeServico +
-                ", pagamento=" + pagamento + "kz" +
-                ", troco=" + calcularTroco() + "kz" +
-                ", total=" + calcularTotal() + "kz" +
-                '}';
+
+        StringBuilder factura = new StringBuilder();
+
+        factura.append("------------------------------------------------");
+        factura.append("Factura\nCliente: ");
+        factura.append(cliente.getNome());
+        factura.append("\nPrato: ");
+        for(Prato p: prato) {
+            factura.append(p);
+        }
+        factura.append("\ntaxaDeServico: ");
+        factura.append(taxaDeServico);
+        factura.append("\nTotal: ");
+        factura.append(calcularTotal());
+        factura.append("\nPagamento: ");
+        factura.append(pagamento);
+        factura.append("\nTroco: ");
+        factura.append(calcularTroco());
+        factura.append("------------------------------------------------");
+
+        return factura.toString();
     }
 
     public double calcularTroco() {

@@ -10,10 +10,12 @@ public abstract class Prato {
     private String recheio;
     private int quantidade;
 
-    public Prato(double precoDeVenda, LocalDate dataDeValidade, double peso) {
+    public Prato(double precoDeVenda, LocalDate dataDeValidade, double peso, int quantidade, String recheio) {
         this.precoDeVenda = precoDeVenda;
         this.dataDeValidade = dataDeValidade;
         this.peso = peso;
+        this.quantidade = quantidade;
+        this.recheio = recheio;
     }
 
     public Double getPrecoDeVenda() {
@@ -60,4 +62,10 @@ public abstract class Prato {
         return peso*precoDeVenda*quantidade;
     }
 
+    @Override
+    public String toString() {
+        return  ", peso=" + peso +
+                ", quantidade=" + quantidade +
+                ", dataDeValidade=" + dataDeValidade;
+    }
 }

@@ -7,11 +7,10 @@ public class Salgadinho extends Prato {
     private String tipo;
     private int quantidadeVendida;
 
-    public Salgadinho(double precoDeVenda, LocalDate dataDeValidade, Double peso, String massa, String tipo, int quantidadeVendida) {
-        super(precoDeVenda, dataDeValidade, peso);
+    public Salgadinho(double precoDeVenda, LocalDate dataDeValidade, Double peso, String recheio, String massa, String tipo, int quantidade) {
+        super(precoDeVenda, dataDeValidade, peso, quantidade, recheio);
         this.massa = massa;
         this.tipo = tipo;
-        this.quantidadeVendida = quantidadeVendida;
     }
 
     public String getMassa() {
