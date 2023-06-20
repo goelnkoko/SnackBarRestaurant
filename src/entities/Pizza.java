@@ -42,10 +42,11 @@ public class Pizza extends Prato {
     @Override
     public String toString() {
         return "Pizza{" +
-                "recheio=" + getRecheio() +
-                ", molho='" + molho + '\'' +
-                ", cobertura='" + cobertura + '\'' +
-                ", coberturaRecheada=" + (coberturaRecheada? "sim":"nao") +
+                ", " + getRecheio() +
+                ", " + molho + '\'' +
+                ", " + cobertura + '\'' +
+                ", " + (coberturaRecheada? "sim":"nao") +
+                ", dataDeValidade=" + getDataDeValidade().plusDays(1) +
                 super.toString() +
                 '}';
     }

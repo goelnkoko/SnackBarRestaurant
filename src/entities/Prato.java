@@ -65,7 +65,6 @@ public abstract class Prato {
     @Override
     public String toString() {
         return  ", peso=" + peso +
-                ", quantidade=" + quantidade +
-                ", dataDeValidade=" + dataDeValidade;
+                ", quantidade=" + quantidade;
     }
 }

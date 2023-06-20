@@ -10,6 +10,10 @@ public class Cliente {
     private List<String> telefone = new ArrayList<>();
     private String endereco;
 
+    public Cliente() {
+
+    }
+
     public Cliente(int numero, String nome, String endereco) {
         this.numero = numero;
         this.nome = nome;
