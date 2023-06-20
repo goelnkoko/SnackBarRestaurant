@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Prato {
 
@@ -64,8 +65,11 @@ public abstract class Prato {
 
     @Override
     public String toString() {
-        return  ", peso=" + peso +
-                ", quantidade=" + quantidade +
-                ", dataDeValidade=" + dataDeValidade;
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return  peso + "kgs, " +
+                quantidade + "un, " +
+                "Data de Exp: " + dataDeValidade.format(dtf);
     }
 }

@@ -43,7 +43,7 @@ public class Pedido {
         this.pagamento = pagamento;
     }
 
-    public double calcularTotal() { //Calcula o total do preco a ser pago pelo cliente
+    public double precoTotal() { //Calcula o total do preco a ser pago pelo cliente
         double total = 0;
 
         for(Prato i: prato) {
@@ -65,11 +65,12 @@ public class Pedido {
         factura.append("\nPrato: ");
         for(Prato p: prato) {
             factura.append(p);
+            factura.append("\n");
         }
         factura.append("\ntaxaDeServico: ");
         factura.append(taxaDeServico);
         factura.append("\nTotal: ");
-        factura.append(calcularTotal());
+        factura.append(precoTotal());
         factura.append("\nPagamento: ");
         factura.append(pagamento);
         factura.append("\nTroco: ");
@@ -79,9 +80,13 @@ public class Pedido {
         return factura.toString();
     }
 
+    public void gerarArquivoFactura() {
+
+    }
+
     public double calcularTroco() {
-        if(pagamento > calcularTotal()){
-            return pagamento-calcularTotal();
+        if(pagamento > precoTotal()){
+            return pagamento-precoTotal();
         } else {
             return 0;
         }
