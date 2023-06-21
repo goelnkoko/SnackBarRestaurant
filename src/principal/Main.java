@@ -106,7 +106,7 @@ public class Main {
         }
 
         System.out.println("Registo concluído!\n" +
-                           "----------------------------------------------------------");
+                "----------------------------------------------------------");
 
         return cliente;
     }
@@ -181,7 +181,7 @@ public class Main {
         }
 
         System.out.print("""
-                           Adicione o tipo de molho desejado: 
+                           Adicione o tipo de molho desejado:
                            [1] Molho de tomate
                            [2] Molho de gorgonzola
                            [3] Molho Parisiense
@@ -214,27 +214,20 @@ public class Main {
                         [3] Rustica
                         [4] Atum & Beringela
                         :""");
-
         int menuCobertura = sc.nextInt();
 
         String cobertura;
         switch (menuCobertura) {
-            case 1 -> {
+            case 1 ->
                 cobertura = "De alho ";
-            }
-            case 2 -> {
+            case 2 ->
                 cobertura = "Calabreza";
-            }
-            case 3 -> {
+            case 3 ->
                 cobertura = "Rustica";
-            }
-            case 4 -> {
+            case 4 ->
                 cobertura = "Atum & Beringela";
-            }
-
-            default -> {
+            default ->
                 cobertura = "";
-            }
         }
 
         System.out.println("Gostaria de uma cobertura recheada? [s] sim [n] nao");
@@ -271,7 +264,7 @@ public class Main {
                             Qual das opcoes preferes:
                             [1] Bolinhos com queijo
                             [2] Bolinhos com queijo e presunto
-                            [3] Risóis de carne 
+                            [3] Risóis de carne
                             [4] Risóis de camarão
                             [5] Coxinha de frango
                             [6] Coxinha de frango com requeijão cremoso
@@ -322,7 +315,7 @@ public class Main {
         String recheio = "canela";
         String molho = "ketchup e mayoneise";
 
-        String pao = null;
+        String pao;
         switch (menuPao) {
             case 1 ->
                 pao = "Pão francês";
@@ -345,6 +338,7 @@ public class Main {
         lancheBD(pedido, prato, conn);
         return prato;
     }
+    
 
     /*FUNCAO DE PAGAMENTO*/
     public static double pagamento(Pedido pedido) {
@@ -372,7 +366,6 @@ public class Main {
 
     public static void pedidoDB (Pedido pedido, Connection conn) {
         PreparedStatement pst = null;
-
         try {
             pst = conn.prepareStatement("insert into pedido (taxaDeServico, fk_cliente)" +
                             "values (?, ?)",
@@ -391,6 +384,9 @@ public class Main {
         catch(SQLException e) {
             e.printStackTrace();
         }
+        finally {
+            DB.closeStatement(pst);
+        }
     }
 
     public static void updatePedidoDB (Pedido pedido, Connection conn) {
@@ -405,7 +401,10 @@ public class Main {
         catch(SQLException e) {
             e.printStackTrace();
         }
-    } //Atualiza a instancia do pedido na bd
+        finally {
+            DB.closeStatement(pst);
+        }
+    }
 
     public static void pizzaDB(Pedido pedido, Pizza prato, Connection conn) {
 
@@ -428,6 +427,7 @@ public class Main {
                 while(rs.next()) {
                     prato.setNumero(rs.getInt(1));
                 }
+                DB.closeResultSet(rs);
             }
 
             pst = conn.prepareStatement(" insert into pizza( cobertura, molho, cob_rech, fk_prato) values (?,?,?,?)");
@@ -439,6 +439,9 @@ public class Main {
         }
         catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            DB.closeStatement(pst);
         }
 
     }
@@ -463,6 +466,7 @@ public class Main {
                 while(rs.next()) {
                     prato.setNumero(rs.getInt(1));
                 }
+                DB.closeResultSet(rs);
             }
 
             pst = conn.prepareStatement(" insert into salgadinho(massa, tipo, quantidadeVendida, fk_prato) values (?,?,?,?)");
@@ -474,6 +478,9 @@ public class Main {
         }
         catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            DB.closeStatement(pst);
         }
     }
 
@@ -499,6 +506,7 @@ public class Main {
                 while(rs.next()) {
                     prato.setNumero(rs.getInt(1));
                 }
+                DB.closeResultSet(rs);
             }
 
             pst = conn.prepareStatement(" insert into lanche(pao, molho, fk_prato) values (?,?,?)");
@@ -509,6 +517,9 @@ public class Main {
         }
         catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            DB.closeStatement(pst);
         }
     }
 }

@@ -5,13 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Pedido {
 
     private int codPedido;
     private Cliente cliente;
-    private double taxaDeServico = 500; //Valor experimental
+    private final double taxaDeServico = 500; //Valor experimental
     private List<Prato> prato = new ArrayList<>();
     private double pagamento;
 
@@ -115,7 +114,6 @@ public class Pedido {
         catch(IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public double calcularTroco() {
@@ -125,5 +123,4 @@ public class Pedido {
             return 0;
         }
     }
-
 }

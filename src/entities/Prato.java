@@ -74,7 +74,6 @@ public abstract class Prato {
 
     @Override
     public String toString() {
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         return  peso + "kgs, " +

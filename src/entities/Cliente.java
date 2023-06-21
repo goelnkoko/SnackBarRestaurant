@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Cliente {
 
@@ -11,7 +9,6 @@ public class Cliente {
     private String endereco;
 
     public Cliente() {
-        this.numero = numero;
     }
     public Cliente(int numero, String nome, String endereco) {
         this.numero = numero;
