@@ -1,11 +1,15 @@
 package entities;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Pedido {
 
+    private int codPedido;
     private Cliente cliente;
     private double taxaDeServico = 500; //Valor experimental
     private List<Prato> prato = new ArrayList<>();
@@ -13,6 +17,14 @@ public class Pedido {
 
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public int getCodPedido() {
+        return codPedido;
+    }
+
+    public void setCodPedido(int codPedido) {
+        this.codPedido = codPedido;
     }
 
     public Cliente getCliente() {
@@ -55,32 +67,54 @@ public class Pedido {
         return total;
     }
 
-    public String gerarFactura() { //Factura provisória a ser tranformada em aquivo txt
+    public String gerarFacturaRecibo() { //Factura provisória a ser tranformada em aquivo txt
 
         StringBuilder factura = new StringBuilder();
 
-        factura.append("------------------------------------------------");
-        factura.append("Factura\nCliente: ");
+        factura.append("FACTURA\n------------------------------------------------");
+        factura.append("\nSNACK BAR, O RESTAURANTE");
+        factura.append("\nCliente: ");
+        factura.append(cliente.getNumero() + " - ");
         factura.append(cliente.getNome());
-        factura.append("\nPrato: ");
+        factura.append("\nPratos: ");
         for(Prato p: prato) {
-            factura.append(p);
-            factura.append("\n");
+            factura.append("\n\t" + p + " Preço: ");
+            factura.append(p.calcularPreco() + "}\n");
         }
-        factura.append("\ntaxaDeServico: ");
-        factura.append(taxaDeServico);
-        factura.append("\nTotal: ");
-        factura.append(precoTotal());
-        factura.append("\nPagamento: ");
-        factura.append(pagamento);
-        factura.append("\nTroco: ");
-        factura.append(calcularTroco());
-        factura.append("------------------------------------------------");
+        factura.append("\nTaxa de serviço: " + taxaDeServico);
+        factura.append("\nTotal: " + precoTotal());
+        factura.append("\nPagamento: " + pagamento);
+        factura.append("\nTroco: " + calcularTroco());
+        factura.append("\n------------------------------------------------");
 
         return factura.toString();
     }
 
-    public void gerarArquivoFactura() {
+    public void gerarArquivoFacturaRecibo() {
+
+        String path = "C:\\Users\\ThinkBook\\IdeaProjects\\OChaleSnackBarRestaurant\\FacturaRecibo.txt";
+
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
+
+            bw.write("FACTURA\n------------------------------------------------");
+            bw.write("SNACK BAR, O RESTAURANTE");
+            bw.write("\nCliente: ");
+            bw.write(cliente.getNumero() + " - ");
+            bw.write(cliente.getNome());
+            bw.write("\nPratos: ");
+            for(Prato p: prato) {
+                bw.write("\n\t" + p + " Preço: " + p.calcularPreco());
+                bw.write("}\n");
+            }
+            bw.write("\nTaxa de serviço: " + taxaDeServico);
+            bw.write("\nTotal: " + precoTotal());
+            bw.write("\nPagamento: " + pagamento);
+            bw.write("\nTroco: " + calcularTroco());
+            bw.write("\n------------------------------------------------");
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

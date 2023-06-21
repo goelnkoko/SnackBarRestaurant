@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public abstract class Prato {
 
+    private int numero;
     private double precoDeVenda;
     private LocalDate dataDeValidade;
     private double peso;
@@ -17,6 +18,14 @@ public abstract class Prato {
         this.peso = peso;
         this.quantidade = quantidade;
         this.recheio = recheio;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public Double getPrecoDeVenda() {

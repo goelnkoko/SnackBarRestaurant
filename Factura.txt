@@ -1,9 +1,0 @@
-FACTURA
-------------------------------------------------
-Cliente: Goel Nkoko
-Prato: Pizza{, mustarda, molho', cobertura', sim, dataDeValidade=2023-06-08, peso=0.3, quantidade=5}Pizza{, fff, hhh', jjj', nao, dataDeValidade=2023-06-08, peso=0.3, quantidade=2}Pizza{, h, g', g', nao, dataDeValidade=2023-06-08, peso=0.3, quantidade=1}
-taxaDeServico: 500.0
-Total: 1700.0
-Pagamento: 2000.0
-Troco: 300.0
-------------------------------------------------

@@ -28,4 +28,13 @@ public class Lanche extends Prato{
     public void setMolho(String molho) {
         this.molho = molho;
     }
+
+    @Override
+    public String toString() {
+        return "Lanche {" +
+                pao +
+                " com recheio de " + getRecheio() +
+                "\n\te molho de '" + molho +
+                "\n\t" + super.toString();
+    }
 }

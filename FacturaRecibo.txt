@@ -1,0 +1,13 @@
+FACTURA
+------------------------------------------------SNACK BAR, O RESTAURANTE
+Cliente: 1 - Goel Nkoko
+Pratos: 
+	Pizza Personalizada {Com recheio de Cogumelo,
+	molho de 'Molho de strogonoff e cobertura de De alho nao contem cobertura recheada
+	5.0kgs, 6un, Data de Exp: 21/06/2023 Preço: 15000.0}
+
+Taxa de serviço: 500.0
+Total: 15500.0
+Pagamento: 30000.0
+Troco: 14500.0
+------------------------------------------------

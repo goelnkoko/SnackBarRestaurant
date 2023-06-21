@@ -36,4 +36,13 @@ public class Salgadinho extends Prato {
     public void somarQuantidadeVendida() {
         quantidadeVendida += getQuantidade();
     }
+
+    @Override
+    public String toString() {
+        return "Salgadinho {" +
+                tipo +
+                ", com recheio de " + getRecheio() +
+                "\n\te massa de '" + massa +
+                "\n\t" + super.toString();
+    }
 }

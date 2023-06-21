@@ -43,9 +43,9 @@ public class Pizza extends Prato {
     public String toString() {
         return "Pizza Personalizada {" +
                 "Com recheio de " + getRecheio() +
-                ", molho de '" + molho +
+                ",\n\tmolho de '" + molho +
                 " e cobertura de " + cobertura +
-                (coberturaRecheada? ", contem cobertura recheada":"nao contem cobertura recheada") +
-                "\n" + super.toString();
+                (coberturaRecheada? ",\n\tcontem cobertura recheada":"nao contem cobertura recheada") +
+                "\n\t" + super.toString();
     }
 }

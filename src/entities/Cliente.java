@@ -7,10 +7,10 @@ public class Cliente {
 
     private int numero;
     private String nome;
-    private List<String> telefone = new ArrayList<>();
+    private String telefone;
     private String endereco;
 
-    public Cliente(int numero) {
+    public Cliente() {
         this.numero = numero;
     }
     public Cliente(int numero, String nome, String endereco) {
@@ -35,12 +35,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public List<String> getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void addTelefone(String telefone) {
-        this.telefone.add(telefone);
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getEndereco() {
